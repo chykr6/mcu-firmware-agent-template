@@ -1,8 +1,8 @@
 # Current Context
 
-This directory records the current handoff state for humans and agents.
+本目录记录当前项目状态和近期交接信息，便于后续人工或 agent 快速接手。
 
-- `state.md`: current architecture, decisions, validation status, risks.
-- `todo.md`: near-term tasks and deferred items.
+- `state.md`：当前架构、已确认决策、验证状态和风险。
+- `todo.md`：近期 TODO 和暂缓事项。
 
-Keep this directory short, current, and practical. Formal requirements belong in `docs/requirements/`. Detailed implementation notes belong in `docs/firmware/`.
+正式需求写到 `docs/requirements/`。实现说明写到 `docs/firmware/`。长期规范写到 `docs/guides/`。

@@ -1,34 +1,36 @@
-# Current State
+# 当前状态
 
-Date: YYYY-MM-DD
+日期：YYYY-MM-DD
 
-## Branches And Remotes
+## 仓库状态
 
-- Main branch: `main`
-- Primary remote: `origin` on GitHub
-- Backup remote: optional
+- 主分支：`main`
+- 主远端：`origin`
+- 备用远端：无 / TBD
 
-## Product Target
+## 固件目标
 
-- MCU: TBD
-- Toolchain: Keil MDK / ARMCC5 or ARMCLANG
-- Firmware target: TBD
-- Optional bootloader: TBD
+- MCU：TBD
+- 构建入口：Keil MDK
+- 主要输出：TBD
+- 是否包含 Boot/OTA：否 / 是，见具体项目说明
+- 是否使用 RTOS：否 / 是，见具体项目说明
 
-## Architecture Decisions
+## 架构边界
 
-- Record confirmed boundaries here.
-- Keep this file focused on facts that help the next engineer or agent continue.
+- 固件分层见 `docs/guides/firmware-architecture.md`。
+- RTOS 约束见 `docs/guides/rtos-guidelines.md`。
+- C 风格见 `docs/guides/mcu-c-style.md`。
 
-## Current Implementation
+## 当前实现
 
 - TBD
 
-## Current Verification
+## 当前验证
 
-- Build: not yet verified
-- Board: not yet verified
+- 构建：未验证
+- 板上：未验证
 
-## Risks
+## 当前风险
 
 - TBD

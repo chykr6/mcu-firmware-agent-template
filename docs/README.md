@@ -1,21 +1,21 @@
-# Documentation Map
+# 文档分类
 
 ## current
 
-Current project state and near-term handoff information. Keep it short and update it often.
+当前项目状态和近期交接信息，只放会随项目推进频繁变化的内容。
 
 ## requirements
 
-Product and firmware requirements. Requirements describe what the product must do, not how the code is implemented.
+产品需求、功能定义、验收口径。只写“要做什么”，不写实现细节。
 
 ## firmware
 
-Firmware implementation notes, old-firmware behavior, Boot/OTA notes, and changelogs.
+固件功能说明、旧固件行为、新固件实现笔记、调用链和版本记录。
 
 ## hardware
 
-Optional hardware design notes that help firmware development. Do not force every project to write a long hardware design document.
+可选硬件说明。只有硬件解释会帮助固件开发时才写，不强制每个项目都有长篇设计稿。
 
 ## guides
 
-Long-lived development rules: coding style, MDK project groups, toolchain config, commit messages, release checklist, and diagram style.
+长期有效的开发规范：C 风格、固件架构、RTOS、MDK 工程、提交信息、图示规范、发布检查等。
