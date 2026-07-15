@@ -14,17 +14,26 @@
 ## 推荐命令入口
 
 ```powershell
+python -m unittest discover -s scripts/tests -v
 python scripts/mdk_build.py
 python scripts/mdk_clangd.py
+python scripts/mdk_flash.py --require-hex
+python scripts/mdk_clean.py --dry-run
 git status --short --branch
 git diff --check
 ```
+
+- 多 `.uvprojx` 或多 target 时显式传 `--project` 和 `--target`。
+- `mdk_clean.py --all` 使用前必须先执行 `--all --dry-run`。
+- 参数和常见错误见 `docs/guides/mdk-toolchain-config.md`。
 
 如果当前机器没有 `python` 命令，可以使用 Windows Python Launcher：
 
 ```powershell
 py -3 scripts/mdk_build.py
 py -3 scripts/mdk_clangd.py
+py -3 scripts/mdk_flash.py --require-hex
+py -3 scripts/mdk_clean.py --dry-run
 ```
 
 ## Windows 注意事项

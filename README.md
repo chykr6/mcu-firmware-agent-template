@@ -60,9 +60,12 @@ docs/current/state.md
 docs/current/todo.md
 docs/requirements/product-requirements.md
 docs/guides/agent-runtime.md
+docs/guides/agent-onboarding.md
 docs/guides/firmware-architecture.md
 docs/guides/mcu-c-style.md
 ```
+
+首次接手可直接复制 `docs/guides/agent-onboarding.md` 中的只读提示词。
 
 ## 构建和 clangd
 

@@ -11,6 +11,8 @@
 
 ## 2. 开始任务前先读
 
+首次接手或跨会话恢复时，可先使用 `docs/guides/agent-onboarding.md` 的只读接手提示词。
+
 1. `docs/current/README.md`
 2. `docs/current/state.md`
 3. `docs/current/todo.md`

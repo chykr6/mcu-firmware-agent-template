@@ -18,4 +18,4 @@
 
 ## guides
 
-长期有效的开发规范：agent 运行约束、C 风格、固件架构、RTOS、MDK 工程、提交信息、图示规范等。
+长期有效的开发规范：agent onboarding、运行约束、C 风格、固件架构、RTOS、MDK 工程、提交信息、图示规范等。

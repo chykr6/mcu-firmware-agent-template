@@ -29,6 +29,7 @@
 - clangd 数据生成到仓库根目录，不生成编辑器专用配置
 - clangd 参数从 `.uvprojx` 读取 CPU/FPU，并允许通过 `clangd.extra_flags` 覆盖
 - 脚本测试位于 `scripts/tests/`
+- 已提供 `docs/guides/agent-onboarding.md` 的只读接手和继续开发提示词
 
 ## 当前验证
 

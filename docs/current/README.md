@@ -6,3 +6,5 @@
 - `todo.md`：近期待办和暂缓事项。
 
 正式需求写到 `docs/requirements/`。实现说明写到 `docs/firmware/`。长期规范写到 `docs/guides/`。
+
+首次接手的只读检查清单和可复制提示词见 `../guides/agent-onboarding.md`。
