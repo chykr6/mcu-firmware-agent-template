@@ -1,2 +1,107 @@
 #!/bin/sh
-python .githooks/commit-msg.py "$1"
+set -eu
+
+if [ "$#" -ne 1 ]; then
+    echo "commit-msg: missing commit message path" >&2
+    exit 1
+fi
+
+awk '
+# Validate the commit message before Git creates the commit.
+#
+# This hook does not modify the message. It only rejects messages that do not
+# match the repository format:
+#
+#   feat(scope): concise English summary
+#
+#   - English detail item.
+#   - 中文说明：可选中文补充。
+#
+# Rules:
+#   - Header must be Conventional Commits.
+#   - Header type must be one of:
+#     feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert.
+#   - Optional scope uses lowercase letters, digits, and hyphen.
+#   - Header summary is required and limited to 72 characters.
+#   - Header summary should be English for tooling and changelog stability.
+#   - If a body exists, line 2 must be blank.
+#   - Body must be a single consecutive "- " bullet list, with no blank
+#     lines between bullet items.
+#   - Body can use English or Chinese.
+#   - Long bullet items may wrap onto continuation lines indented by two
+#     spaces.
+#   - Body lines must be 100 characters or fewer.
+#   - Multiple bullet items on one line are rejected.
+
+function fail(message) {
+    print "commit-msg: " message > "/dev/stderr"
+    exit 1
+}
+
+{
+    sub(/\r$/, "")
+}
+
+/^#/ {
+    next
+}
+
+{
+    lines[++count] = $0
+}
+
+END {
+    while (count > 0 && lines[count] == "") {
+        count--
+    }
+
+    if (count == 0) {
+        fail("empty commit message")
+    }
+
+    header_re = "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\\([a-z0-9-]+\\))?(!)?: .{1,72}$"
+    if (lines[1] !~ header_re) {
+        fail("header must be Conventional Commits, e.g. feat(ledfx): add player framework")
+    }
+
+    if (count == 1) {
+        exit 0
+    }
+
+    if (lines[2] != "") {
+        fail("line 2 must be blank")
+    }
+
+    previous_was_body = 0
+
+    for (line_no = 3; line_no <= count; line_no++) {
+        line = lines[line_no]
+
+        if (line == "") {
+            fail("line " line_no ": body bullet items must be consecutive; remove blank lines")
+        }
+
+        if (length(line) > 100) {
+            fail("line " line_no ": body lines must be 100 characters or fewer")
+        }
+
+        if (line ~ /^- / && index(substr(line, 3), " - ") > 0) {
+            fail("line " line_no ": multiple bullet items on one line are not allowed")
+        }
+
+        if (line ~ /^- /) {
+            previous_was_body = 1
+            continue
+        }
+
+        if (line ~ /^  [^ ]/) {
+            if (!previous_was_body) {
+                fail("line " line_no ": continuation line must follow a bullet item")
+            }
+            continue
+        }
+
+        fail("line " line_no ": body lines must use dash-space bullets or two-space continuations")
+    }
+}
+' "$1"
