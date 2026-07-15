@@ -1,3 +1,3 @@
-# Production
+# 生产资料
 
-Optional directory for production outputs such as Gerber, BOM, placement files, and assembly notes.
+可选目录，用于保存 Gerber、BOM、坐标文件、装配说明等生产资料。

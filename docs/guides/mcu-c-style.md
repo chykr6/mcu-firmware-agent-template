@@ -1,56 +1,56 @@
-# MCU C Style
+# MCU C 风格
 
-## Tools
+## 工具
 
-- Use repository `.clang-format`.
-- Use clangd for navigation and diagnostics.
-- C standard: C99 unless the project states otherwise.
+- 使用仓库 `.clang-format`。
+- 使用 clangd 做导航和诊断。
+- C 标准默认 C99，除非项目另有说明。
 
-## Files
+## 文件
 
-- C source files use `.c`; headers use `.h`.
-- File names use lowercase with underscores.
-- Each file should own one clear module or tightly related functionality.
-- Headers expose only public types, macros, and function declarations.
-- Headers must not define writable global variables.
-- Each header must have an include guard.
+- C 源文件使用 `.c`，头文件使用 `.h`。
+- 文件名使用小写字母和下划线。
+- 每个文件只负责一个清晰模块，或一组强相关功能。
+- 头文件只暴露公共类型、宏和函数声明。
+- 头文件不得定义可写全局变量。
+- 每个头文件必须有 include guard。
 
-## Naming
+## 命名
 
-- Functions and variables: lowercase with underscores.
-- Types: lowercase with underscores and `_t` suffix.
-- Macros and enum values: uppercase with underscores.
-- Public symbols must use a module prefix.
-- Private static variables use `s_` prefix.
-- Global variables use `g_` prefix.
-- Time variables must include units, for example `timeout_ms`.
+- 函数和变量：小写字母加下划线。
+- 类型：小写字母加下划线，并以 `_t` 结尾。
+- 宏和枚举值：大写字母加下划线。
+- 公共符号必须有模块前缀。
+- 私有静态变量使用 `s_` 前缀。
+- 全局变量使用 `g_` 前缀。
+- 时间变量必须带单位后缀，例如 `timeout_ms`。
 
-## Formatting
+## 格式
 
-- 4 spaces indentation. No tabs.
-- K&R braces: `if (cond) {`.
-- All `if/else/for/while/do` bodies must use braces.
-- One statement per line.
-- Pointer declarations use `uint8_t *data`.
-- Binary operators have spaces around them.
+- 缩进 4 空格，不使用 tab。
+- K&R 大括号：`if (cond) {`。
+- 所有 `if/else/for/while/do` 语句体必须使用大括号。
+- 一行只写一条语句。
+- 指针声明写作 `uint8_t *data`。
+- 二元运算符两侧加空格。
 
-## Comments
+## 注释
 
-- Code comments use English.
-- Explain reasons, constraints, hardware notes, and protocol notes.
-- Do not restate obvious code.
-- Public functions should use Doxygen-style comments.
-- Remove commented-out dead code before commit.
+- 代码注释使用英文。
+- 注释解释原因、约束、硬件注意事项和协议注意事项。
+- 不要复述显而易见的代码。
+- 公共函数建议使用 Doxygen 风格注释。
+- 提交前删除注释掉的废代码。
 
-## Quality
+## 质量
 
-- Declare and initialize local variables near the start of a function or block.
-- Use fixed-width integer types for protocol, file format, and cross-module data.
-- ISR-shared variables use `volatile` where needed.
-- Validate input pointers or clearly document non-null requirements.
-- Check return values from functions that return errors.
-- Use `(void)` for intentionally ignored return values.
-- Avoid `malloc/free` unless explicitly approved.
-- Keep ISRs short.
-- Avoid long blocking operations in normal tasks.
-- `switch` must include `default`.
+- 局部变量在函数或代码块起始附近声明并初始化。
+- 协议、文件格式、跨模块数据使用固定宽度整数类型。
+- ISR 共享变量按需使用 `volatile`。
+- 校验输入指针，或明确记录非空要求。
+- 检查带错误返回值的函数结果。
+- 有意忽略返回值时使用 `(void)`。
+- 除非明确批准，避免使用 `malloc/free`。
+- ISR 保持短小。
+- 普通任务中避免长时间阻塞。
+- `switch` 必须包含 `default`。

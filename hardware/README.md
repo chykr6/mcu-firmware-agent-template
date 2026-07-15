@@ -1,15 +1,15 @@
-# Hardware References
+# 硬件资料
 
-This directory stores hardware files that are useful for firmware development.
+本目录保存对固件开发有帮助的硬件文件。
 
-## Recommended
+## 推荐
 
-- Put schematic PDF or schematic source under `schematic/`.
-- Keep file names stable and include board revision when possible.
+- 将原理图 PDF 或原理图源文件放到 `schematic/`。
+- 文件名尽量稳定，并包含板级版本号。
 
-## Optional
+## 可选
 
-- `pcb/`: PCB source or layout exports.
-- `production/`: Gerber, BOM, placement files, assembly notes.
+- `pcb/`：PCB 源文件或布局导出资料。
+- `production/`：Gerber、BOM、坐标文件、装配说明。
 
-Datasheets are not required by this template. Add `docs/datasheet/` only when a project benefits from keeping local PDF references.
+模板不强制保存数据手册。只有项目确实需要本地 PDF 参考时，再新增 `docs/datasheet/` 或产品自定义目录。

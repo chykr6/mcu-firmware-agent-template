@@ -1,4 +1,4 @@
-# Boot OTA Example
+# Boot/OTA 示例
 
 这是可选示例，不是基础模板默认启用的工程结构。
 

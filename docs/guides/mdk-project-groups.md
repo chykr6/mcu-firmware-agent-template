@@ -1,8 +1,8 @@
-# MDK Project Groups
+# MDK 工程分组
 
-Use stable group names so humans and agents can edit `.uvprojx` safely.
+使用稳定的 group 名称，方便人和 agent 安全编辑 `.uvprojx`。
 
-Recommended groups:
+推荐分组：
 
 ```text
 User/app
@@ -15,8 +15,8 @@ Drivers/CMSIS
 Drivers/Vendor
 ```
 
-Rules:
+规则：
 
-- Moving files between groups must not change compiler options.
-- Do not reset target options while editing file lists.
-- Keep startup, system, scatter, and flash settings explicit.
+- 移动文件所属 group 时，不得顺手改变编译选项。
+- 编辑文件列表时，不得重置 target 选项。
+- startup、system、scatter、flash 配置必须保持显式可查。

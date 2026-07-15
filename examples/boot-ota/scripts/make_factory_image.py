@@ -1,10 +1,9 @@
-# Placeholder for factory image generation.
-# Product projects should merge bootloader and application artifacts with
-# address range validation.
+# 量产镜像生成占位脚本。
+# 产品项目应合并 bootloader 和 application 产物，并校验地址范围。
 
 
 def main():
-    print("TODO: implement factory image generation")
+    print("TODO: 实现量产镜像生成")
 
 
 if __name__ == "__main__":

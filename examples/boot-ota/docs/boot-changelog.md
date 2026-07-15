@@ -1,5 +1,5 @@
-# Boot Changelog
+# Boot 变更记录
 
-## Unreleased
+## 未发布
 
-- Initial template.
+- 初始化 Boot/OTA 示例。

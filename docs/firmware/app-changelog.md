@@ -1,5 +1,5 @@
-# APP Changelog
+# APP 固件变更记录
 
-## Unreleased
+## 未发布
 
-- Initial template.
+- 初始化模板。

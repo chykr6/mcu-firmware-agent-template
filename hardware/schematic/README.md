@@ -1,8 +1,8 @@
-# Schematic
+# 原理图
 
-Place schematic PDF or schematic source files here.
+将原理图 PDF 或原理图源文件放在这里。
 
-Recommended naming:
+推荐命名：
 
 ```text
 product-board-rev-a-schematic.pdf

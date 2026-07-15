@@ -1,37 +1,37 @@
-# Product Requirements
+# 产品需求
 
-Version: v0.1
-Date: YYYY-MM-DD
-Scope: Product behavior only. Do not describe implementation here.
+版本：v0.1
+日期：YYYY-MM-DD
+范围：只描述产品行为和验收口径，不写实现细节。
 
-## 1. Product Goal
-
-TBD
-
-## 2. Hardware Scope
-
-- MCU: TBD
-- Power: TBD
-- IO: TBD
-- Storage: TBD
-- Communication: TBD
-
-## 3. User Visible Features
+## 1. 产品目标
 
 TBD
 
-## 4. Modes And Controls
+## 2. 硬件范围
+
+- MCU：TBD
+- 供电：TBD
+- IO：TBD
+- 存储：TBD
+- 通信：TBD
+
+## 3. 用户可见功能
 
 TBD
 
-## 5. Persistence
+## 4. 模式和控制
 
 TBD
 
-## 6. Error Handling
+## 5. 持久化
 
 TBD
 
-## 7. First Release Acceptance
+## 6. 错误处理
+
+TBD
+
+## 7. 首版验收
 
 TBD

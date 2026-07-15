@@ -22,3 +22,4 @@ firmware/MDK-ARM/Listings/
 boot/MDK-ARM/Objects/
 boot/MDK-ARM/Listings/
 compile_commands.json
+**/compile_commands.json

@@ -1,81 +1,81 @@
-# Repository Diagram Style
+# 仓库图示风格
 
-This guide applies to SVG block diagrams, architecture diagrams, state diagrams, hardware block diagrams, and similar repository-managed illustrations.
+本指南适用于 SVG 框图、架构图、状态图、硬件框图以及类似的仓库内插图。
 
-## Goals
+## 目标
 
-- Diagrams should explain structure, data flow, power flow, control paths, and risk boundaries.
-- Diagrams should look consistent across one repository.
-- Avoid decorative illustration. Keep engineering documents quiet and readable.
+- 图示应解释结构、数据流、电源流、控制路径和风险边界。
+- 同一仓库内的图示应保持一致风格。
+- 避免装饰性插画，工程文档应安静、清晰、易读。
 
-## Canvas
+## 画布
 
-- Use SVG with `viewBox`.
-- Common width: 1180 or 1280.
-- Background: white `#ffffff`.
-- Margin: 40-50.
-- Prefer the same width for related diagrams.
+- 使用带 `viewBox` 的 SVG。
+- 常用宽度：1180 或 1280。
+- 背景：白色 `#ffffff`。
+- 边距：40-50。
+- 同一组相关图示尽量使用相同宽度。
 
-## Text
+## 文字
 
-Use a shared font declaration:
+使用统一字体声明：
 
 ```svg
 text { font-family: Consolas, "Microsoft YaHei", monospace; }
 ```
 
-- Title: 18-20px, weight 700, `#1f2933`.
-- Subtitle: 14px, `#5f6b75`.
-- Main labels: 15px, `#1f2933`.
-- Secondary labels: 13px, `#5f6b75`.
-- Keep code identifiers, net names, chip names, and protocol names exact.
-- Do not let text overlap lines, arrows, or module borders.
+- 标题：18-20px，字重 700，`#1f2933`。
+- 副标题：14px，`#5f6b75`。
+- 主要标签：15px，`#1f2933`。
+- 次要标签：13px，`#5f6b75`。
+- 代码标识符、网络名、芯片名和协议名必须保持准确。
+- 文字不得与线条、箭头或模块边框重叠。
 
-## Modules
+## 模块
 
-Baseline module style:
+基础模块样式：
 
 ```svg
 .box { fill:#ffffff; stroke:#26313d; stroke-width:1.8; rx:7; }
 ```
 
-Semantic colors:
+语义颜色：
 
-| Meaning | Fill | Stroke |
+| 含义 | 填充 | 描边 |
 | --- | --- | --- |
-| Core logic / conversion | `#eef7ff` | `#2477b3` |
-| Interface / output / normal load | `#f1faf3` | `#33824a` |
-| External source / switching | `#fff8e8` | `#c27c13` |
-| Power rail / high-risk power | `#fff0f0` | `#bb3b35` |
-| Protection / isolation / special function | `#f8f0fb` | `#8751a1` |
+| 核心逻辑 / 转换 | `#eef7ff` | `#2477b3` |
+| 接口 / 输出 / 普通负载 | `#f1faf3` | `#33824a` |
+| 外部来源 / 切换 | `#fff8e8` | `#c27c13` |
+| 电源轨 / 高风险电源 | `#fff0f0` | `#bb3b35` |
+| 保护 / 隔离 / 特殊功能 | `#f8f0fb` | `#8751a1` |
 
-Rules:
+规则：
 
-- Corner radius 6-7.
-- Do not use gradients, shadows, glow, decorative dots, or background textures.
-- Use inner divider lines sparingly, color `#d4dbe2`, width 1.2px.
+- 圆角半径 6-7。
+- 不使用渐变、阴影、发光、装饰点或背景纹理。
+- 内部分隔线谨慎使用，颜色 `#d4dbe2`，宽度 1.2px。
 
-## Lines And Arrows
+## 线条和箭头
 
-| Type | Color | Width | Style |
+| 类型 | 颜色 | 宽度 | 样式 |
 | --- | --- | ---: | --- |
-| Normal relation / bidirectional interface | `#52606d` | 2.2px | solid |
-| Data / USB | `#2077b4` | 2.4px | solid |
-| Power | `#c53b32` | 2.6px | solid |
-| Board connector / FPC signal | `#33824a` | 2.6px | solid |
-| Control | `#6b7280` | 2px | dashed `7 5` |
-| Sense / detect | `#2b8a4b` | 2.1px | dashed `6 5` |
+| 普通关系 / 双向接口 | `#52606d` | 2.2px | 实线 |
+| 数据 / USB | `#2077b4` | 2.4px | 实线 |
+| 电源 | `#c53b32` | 2.6px | 实线 |
+| 板级连接器 / FPC 信号 | `#33824a` | 2.6px | 实线 |
+| 控制 | `#6b7280` | 2px | 虚线 `7 5` |
+| 检测 / 采样 | `#2b8a4b` | 2.1px | 虚线 `6 5` |
 
-- Prefer orthogonal paths.
-- Use small fixed 7x7 arrow markers.
-- Set `markerUnits="userSpaceOnUse"`.
-- Use white stroke around line labels instead of white rectangles.
+- 优先使用正交路径。
+- 使用固定 7x7 的小箭头 marker。
+- 设置 `markerUnits="userSpaceOnUse"`。
+- 线条标签优先使用白色描边，不使用白色矩形块。
 
-## Agent Update Flow
+## Agent 更新流程
 
-1. Read this guide and the Markdown file that references the diagram.
-2. Reuse existing SVG styles in the same directory if available.
-3. Update diagram text and search for stale net names, chip names, and terms.
-4. Verify SVG XML is parseable.
-5. Verify Markdown image links exist.
-6. Run `git diff --check` and inspect `git status --short`.
+1. 阅读本指南和引用图示的 Markdown 文件。
+2. 如果同目录已有 SVG，优先复用已有样式。
+3. 更新图中文字，并检查是否存在过期网络名、芯片名和术语。
+4. 确认 SVG XML 可解析。
+5. 确认 Markdown 图片链接存在。
+6. 运行 `git diff --check` 并检查 `git status --short`。

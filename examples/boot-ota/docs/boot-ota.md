@@ -1,23 +1,23 @@
-# Boot OTA Notes
+# Boot/OTA 说明
 
-Implementation notes for bootloader and OTA.
+用于记录 Bootloader 和 OTA 的实现说明。
 
-## Flash Map
-
-TBD
-
-## Boot Decision Flow
+## Flash 布局
 
 TBD
 
-## OTA Package
+## Boot 判定流程
 
 TBD
 
-## Failure Handling
+## OTA 升级包
 
 TBD
 
-## Board Test Checklist
+## 失败处理
+
+TBD
+
+## 板级测试清单
 
 TBD

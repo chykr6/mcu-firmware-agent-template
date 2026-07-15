@@ -1,3 +1,3 @@
 # PCB
 
-Optional directory for PCB source files or layout exports.
+可选目录，用于保存 PCB 源文件或布局导出资料。
