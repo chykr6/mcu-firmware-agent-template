@@ -5,7 +5,7 @@ This repository uses a `commit-msg` hook to keep commit messages consistent.
 Enable it once per clone:
 
 ```powershell
-git config core.hooksPath .git-hooks
+git config core.hooksPath .githooks
 ```
 
 Commit messages must use this format:
