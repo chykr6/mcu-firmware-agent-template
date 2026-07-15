@@ -15,6 +15,7 @@
 *.pyc
 __pycache__/
 .cache/
+.clangd
 .vscode/
 toolchain.local.json
 firmware/MDK-ARM/Objects/

@@ -1,6 +1,9 @@
 {
-  "uv4": "C:/Keil_v5/UV4/UV4.exe",
-  "fromelf": "C:/Keil_v5/ARM/ARMCC/bin/fromelf.exe",
-  "project": "firmware/MDK-ARM/project.uvprojx",
-  "target": "APP"
+    "mdk": {
+        "uv4_dir": "C:/Keil_v5/UV4"
+    },
+    "clangd": {
+        "binary": "clang",
+        "extra_flags": []
+    }
 }

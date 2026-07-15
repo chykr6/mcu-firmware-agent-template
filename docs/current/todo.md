@@ -10,6 +10,7 @@
 
 ## P1
 
+- [ ] 多工程项目需要时，为 `mdk_clangd.py` 增加 APP/BOOT compilation database 合并能力。
 - [ ] 明确固件分层和模块边界。
 - [ ] 完成 BSP 和中间件 bring-up。
 - [ ] 建立最小主循环或 RTOS task 骨架。

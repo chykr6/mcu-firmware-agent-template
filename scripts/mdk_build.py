@@ -1,54 +1,63 @@
+#!/usr/bin/env python3
+"""Build or rebuild a Keil MDK project through UV4.exe."""
+
+from __future__ import annotations
+
 import argparse
 from pathlib import Path
 
 from mdk_common import (
-    ConfigError,
-    ensure_file,
-    load_config,
-    mdk_project_path,
-    mdk_target_name,
-    run_command,
-    tool_path,
+    ensure_project_and_target,
+    find_uv4,
+    output_paths,
+    parse_build_result,
+    print_log_tail,
+    run_uv4,
 )
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Build a Keil MDK target.")
-    parser.add_argument("--config", type=Path, help="toolchain config path")
-    parser.add_argument("--target", help="override MDK target name")
-    parser.add_argument("--rebuild", action="store_true", help="use UV4 rebuild instead of build")
-    parser.add_argument("--clean", action="store_true", help="clean target before build")
-    parser.add_argument("--log", type=Path, help="build log path")
+    parser = argparse.ArgumentParser(description="Build a Keil MDK .uvprojx project.")
+    parser.add_argument("--project", type=Path, help="Path to .uvprojx.")
+    parser.add_argument("--target", help="Keil target name.")
+    parser.add_argument("--uv4", type=Path, help="Path to UV4.exe.")
+    parser.add_argument("--rebuild", action="store_true", help="Run a full rebuild.")
+    parser.add_argument("--log", type=Path, help="Build log path.")
+    parser.add_argument("--tail", type=int, default=80, help="Lines of log tail to print.")
     return parser.parse_args()
-
-
-def uv4_command(uv4: Path, project: Path, target: str, log: Path, action: str) -> list[str]:
-    return [str(uv4), action, str(project), "-t", target, "-o", str(log)]
 
 
 def main() -> int:
     args = parse_args()
-    try:
-        cfg = load_config(args.config)
-        uv4 = tool_path(cfg, "uv4")
-        project = mdk_project_path(cfg)
-        target = args.target or mdk_target_name(cfg)
-        log = args.log or (project.parent / "build_mdk.log")
+    project_path, target_elem, target_name = ensure_project_and_target(
+        args.project, args.target, Path.cwd()
+    )
+    paths = output_paths(project_path, target_elem)
+    log_path = args.log.resolve() if args.log else paths["build_log"]
+    uv4 = find_uv4(args.uv4)
+    action = "-r" if args.rebuild else "-b"
 
-        ensure_file(uv4, "UV4")
-        ensure_file(project, "MDK project")
-        log.parent.mkdir(parents=True, exist_ok=True)
+    print(f"project: {project_path}")
+    print(f"target: {target_name}")
+    print(f"uv4: {uv4}")
+    print(f"log: {log_path}")
 
-        if args.clean:
-            code = run_command(uv4_command(uv4, project, target, log, "-c"), project.parent)
-            if code != 0:
-                return code
+    rc = run_uv4(uv4, action, project_path, target_name, log_path)
+    errors, warnings = parse_build_result(log_path)
+    if errors is not None:
+        print(f"result: {errors} Error(s), {warnings} Warning(s)")
+    else:
+        print("result: build summary not found")
 
-        action = "-r" if args.rebuild else "-b"
-        return run_command(uv4_command(uv4, project, target, log, action), project.parent)
-    except ConfigError as exc:
-        print(f"error: {exc}")
-        return 2
+    if rc != 0:
+        print_log_tail(log_path, args.tail)
+        return rc
+    if errors is not None and errors > 0:
+        print_log_tail(log_path, args.tail)
+        return 1
+
+    print_log_tail(log_path, args.tail)
+    return 0
 
 
 if __name__ == "__main__":
